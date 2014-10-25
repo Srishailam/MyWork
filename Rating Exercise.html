@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Rating Selection Example</title>
+		<style>
+		#hide{
+			display:none;
+		}
+		.rating input{
+			position:absolute;
+			opacity:0;
+			cursor:pointer;
+			width:17px;
+		}
+		.rating{
+		    height: 20px;
+		    width: 100%;
+		}
+		.rating span{
+			width:24px;
+			height:16px;
+			line-height:16px;
+			padding:1px 22px 1px 0;
+			background:url('http://everythingfrontend.com/samples/star-rating/star.png') no-repeat 3px 0px;
+		}
+		.rating input[type=radio]:checked +span ~ span{
+			background-position: 3px -16px;
+		}		
+		</style>
+	</head>
+<div class="rating">
+    <input type="radio" name="rating" value="0" checked /><span id="hide"></span>
+    <input type="radio" name="rating" value="1" /><span></span>
+    <input type="radio" name="rating" value="2" /><span></span>
+    <input type="radio" name="rating" value="3" /><span></span>
+    <input type="radio" name="rating" value="4" /><span></span>
+    <input type="radio" name="rating" value="5" /><span></span>
+</div>
+</html>
