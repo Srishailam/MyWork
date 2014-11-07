@@ -1,0 +1,22 @@
+
+var a = [1,3,4,2,1,6,3,8,10,9,7,2,3,4,5,6,3,2,6,7,8,1,3,9];
+console.log(a);
+console.log(a.length);
+
+function findAll(a,x){
+  var res = [];
+  var pos = 0;
+  var len = a.length;
+  while(pos<len){
+    pos = a.indexOf(x,pos);
+    if(pos == -1)break;
+    res.push(pos);
+    pos = pos+1;
+  }
+  if(res.length ==0){console.log("Element not found");}
+  return res;
+}
+console.log("Indexes of 1: "+ findAll(a,1).join());
+console.log(findAll(a,2));
+console.log(findAll(a,3));
+console.log(findAll(a,100));
