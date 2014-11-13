@@ -1,0 +1,14 @@
+var arr = [1,2,3,4,5,15,4,3,2,1];
+
+Array.prototype.removeDup = function(){
+
+  var newArr = [],oldArr = this;
+  for(var i=0;i<oldArr.length;i++){
+    if(newArr.indexOf(oldArr[i])==-1){
+      newArr.push(oldArr[i]);
+    }
+  }
+  return newArr;
+
+}
+arr.removeDup();
