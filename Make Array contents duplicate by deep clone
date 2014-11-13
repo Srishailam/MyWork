@@ -1,0 +1,10 @@
+var arr = [1,2,3,4,5];
+
+Array.prototype.duplicate = function() {
+  
+	return this.slice(0).concat(this.slice(0));
+};
+
+
+console.log(arr.duplicate());
+
