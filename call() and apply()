@@ -1,0 +1,18 @@
+var obj = {};
+obj.value = 10;
+
+obj.addValues = function(additionalValues) {
+  for (var i = 0; i < arguments.length; i++) {
+    this.value += arguments[i];
+  }
+  return this.value;
+};
+
+obj.addValues(20);
+
+var f = obj.addValues;
+f(20);// returns NaN. Since Window does not have value property(window.value/this.value in addValues mehtod)
+
+//Diff is way of passing arguments to the function. For call, arguments,Fro apply array of arguments.
+f.call(obj, 10, 20, 30);//obj.value becomes this.value inside addValues method.
+f.apply(obj, [10, 20, 30]);//obj.value becomes this.value inside addValues method.
