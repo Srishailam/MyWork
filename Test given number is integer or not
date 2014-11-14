@@ -1,0 +1,7 @@
+function isInteger(x) {
+  return (x ^ 0) === x;
+}
+isInteger( - 10.01);//false
+isInteger( - 10.00);//true
+isInteger( - 10);//true
+isInteger(10);//ofcourse true
