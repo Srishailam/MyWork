@@ -1,0 +1,63 @@
+//1. Static Namespacing
+//object Notation.
+var myApp = {
+  id: 0,
+  next: function () {
+    return this.id++;
+  },
+  reset: function () {
+    this.id = 0;
+  }
+}
+window.console && console.log(myApp.next(), myApp.next(), myApp.reset(), myApp.next()
+)
+//0, 1, undefined, 0
+//Module Pattern
+var myApp = (function () {
+  var id = 0;
+  return {
+    next: function () {
+      return id++;
+    },
+    reset: function () {
+      id = 0;
+    }
+  };
+}) ();
+window.console && console.log(myApp.next(), myApp.next(), myApp.reset(), myApp.next()
+)
+//0, 1, undefined, 0 
+//2. Dynamic Namespacing
+var myApp = {
+};
+(function (context) {
+  var id = 0;
+  context.next = function () {
+    return id++;
+  };
+  context.reset = function () {
+    id = 0;
+  }
+}) (this);
+console.log(next(), next(), reset(), next()
+)
+//0, 1, undefined, 0  
+//diff modules act independently. 
+var subsys1 = {
+},
+subsys2 = {
+};
+var nextIdMod = function (startId) {
+  var id = startId || 0;
+  this.next = function () {
+    return id++;
+  };
+  this.reset = function () {
+    id = 0;
+  }
+};
+nextIdMod.call(subsys1);
+nextIdMod.call(subsys2, 1000);
+window.console && console.log(subsys1.next(), subsys1.next(), subsys2.next(), subsys1.reset(), subsys2.next(), subsys1.next()
+)
+//0, 1, 1000, undefined, 1001, 0
