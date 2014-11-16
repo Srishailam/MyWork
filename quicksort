@@ -1,0 +1,77 @@
+//QuickSort O(n logn)/worse case O(n^2)
+//1.Functional programming way.
+var a = [34, 203, 3, 746, 200, 984, 198, 764, 9];
+ 
+Array.prototype.quick_sort = function ()
+{
+    if (this.length <= 1)
+        return this;
+ 
+    var pivot = this[Math.round(this.length / 2)];
+ 
+    return this.filter(function (x) { return x <  pivot }).quick_sort().concat(
+           this.filter(function (x) { return x == pivot })).concat(
+           this.filter(function (x) { return x >  pivot }).quick_sort());
+}
+a.quick_sort();
+//2.Normal
+var a = [34, 203, 3, 746, 200, 984, 198, 764, 9];
+ 
+function getPivot (arr) {
+    var iValFirst = arr[0],
+            iLast = arr.length - 1,
+            iValLast = arr[iLast],
+            iMid = Math.floor(arr.length / 2),
+            iValMid = arr[iMid];
+ 
+    // first position is lowest
+    if (iValFirst < iValLast && iValFirst < iValMid) {
+        return iValMid < iValLast ? iMid : iLast;
+    }
+    // mid position is lowest
+    else if (iMid < iValLast && iMid < iValMid) {
+        return iValFirst < iValLast ? 0 : iLast;
+    }
+    // last position is lowest
+    else {
+        return iValFirst < iValMid ? 0 : iMid;
+    }
+}
+function quicksort (arr) {
+    var aLess = [],
+        aGreater = [],
+        i,
+        j,
+        iPivot,
+        iPivotVal;
+ 
+    // array of length zero or one is already sorted
+    if (arr.length <= 1) {
+        return arr;
+    }
+ 
+    iPivot = getPivot(arr);
+    iPivotVal = arr[iPivot];
+ 
+    // the function to process the value and compare it to
+    // the pivot value and put into the correct array
+    function compVal(iVal) {
+        (iVal <= iPivotVal ? aLess : aGreater).push(iVal);
+    }
+ 
+    // compare values before the pivot
+    for (i = 0, j = iPivot; i < j; i++) {
+        compVal(arr[i]);
+    }
+ 
+    // compare values after the pivot
+    for (i = iPivot + 1, j = arr.length; i < j; i++) {
+        compVal(arr[i]);
+    }
+ 
+    // create a new list from sorted sublists around the pivot value
+    return quicksort(aLess).concat([iPivotVal], quicksort(aGreater));
+}
+quicksort(a);
+
+
