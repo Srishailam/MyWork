@@ -1,0 +1,17 @@
+//factors of given number in less comparisons
+function getFactors(n){
+  var result = [];
+  for(var i=1;i<=Math.floor(Math.sqrt(n));i++){
+  
+    if(n%i==0){
+      result.push(i);
+      if(n/i !==i){
+            result.push(n/i);
+      }
+    }
+  
+  }
+  result.sort(function(a,b){return a-b;});
+  return result;
+}
+getFactors(64);
