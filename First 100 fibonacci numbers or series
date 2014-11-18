@@ -1,0 +1,17 @@
+function fibo() {
+    var first,second,add;
+    for(var i=0;i<100;i++){
+        if(i === 0){
+            first = 0;
+            second = 1;
+          console.log(first);console.log(second);console.log("---------");
+        }
+        
+        add = first + second;
+        first = second;
+        second = add;
+      console.log(add);
+    }
+    
+}
+fibo();
