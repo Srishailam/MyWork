@@ -1,0 +1,6 @@
+function arrayDup(s){
+  
+ console.log(s.concat(s.slice(0)));
+  
+}
+arrayDup([1,2,3,4,5]);
