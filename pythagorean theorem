@@ -10,5 +10,5 @@ points.dist = function() { // Define a method to compute distance between points
   var b = p2.y-p1.y; 
   return Math.sqrt(a*a +b*b);
 }; 
-
+//c2 = a2 + b2;
 points.dist();
