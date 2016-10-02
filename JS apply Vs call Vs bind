@@ -1,0 +1,3 @@
+1. apply() - array of arguments
+2. call() - comma separated arguments
+3. bind() - same as call,plus we can invoke function many number of times.
