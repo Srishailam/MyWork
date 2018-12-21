@@ -1,12 +1,19 @@
-function findFirstMissing(data, start, end){
+function findNumber(values) {
+  let result = [];
 
-if(start>end){ return end+1;}
-if(start != data[start]){ return start;}
-var mid = Math.floor((start + end) / 2); 
- if (data[mid] == mid){ return findFirstMissing(data, mid+1, end);} 
-  
-  return findFirstMissing(data, start, mid);
+  for (let i = 0; i < values.length; ++i) {
+    if (0 <= values[i]) {
+      result[values[i]] = true;
+    }
+  }
+  for (let i = 1; i <= result.length; ++i) {
+    if (undefined === result[i]) {
+      return i;
+    }
+  }
+
+  return 1
 }
-var data = [0, 1, 2, 3, 4, 5, 6, 7, 10];
-findFirstMissing(data, 0, data.length);
-//8
+findNumber([1,2,3,4,5,6,8,9,10,11,12]);
+(13) [empty, true, true, true, true, true, true, empty, true, true, true, true, true]
+7
