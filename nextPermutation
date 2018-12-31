@@ -1,5 +1,11 @@
+function swap(a, i,j){
+	var t = a[i];
+	a[i] = a[j];
+	a[j] = t;
+}
+undefined
 function findNextPermuation(vals){
-	var largestI = -1;
+	var largestI = 0;
 	for(var i=0;i<vals.length-1;i++){
 		if(vals[i]<vals[i+1]){
 			largestI = i;
@@ -8,9 +14,9 @@ function findNextPermuation(vals){
 	if(largestI==-1){
 		console.log('no permuation');
 	}
-	var largestJ = 0;
-	for(var j=0; j<vals.length;j++){
-		if(vals[largestJ]<vals[j]){
+	var largestJ = -1;
+	for(var j=largestI+1; j<vals.length;j++){
+		if(vals[largestI]<vals[j]){
 			largestJ = j;
 		}
 	}
@@ -18,19 +24,14 @@ function findNextPermuation(vals){
 	console.log('largestJ:',largestJ);		
 
 	swap(vals, largestI, largestJ);
-	console.log(vals);
+	
 	var endArray = vals.splice(largestI+1);
-	endArray.reverse();
-	vals = vals.concat(endArray);
+	
+	vals = vals.concat(endArray.sort());
 	return vals;
 }
-function swap(a, i,j){
-	var t = a[i];
-	a[i] = a[j];
-	a[j] = t;
-}
-findNextPermuation([0,1,2]);
-largestI: 1
-largestJ: 2
-(3) [0, 2, 1]
-(3) [0, 2, 1]
+
+findNextPermuation([9,8,4,8,6,5]);
+largestI: 2
+largestJ: 5
+[9, 8, 5, 4, 6, 8]
