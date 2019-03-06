@@ -15,16 +15,20 @@ function getContiguousSubstringsOfString_Option1(str){
    for( let i=0;i<str.length;i++){
       result = result.concat(getSubstrings(str, i+1));
    }
+    console.log(result)
     return result ;
   }
   function getSubstrings(str, size){
     let tempArray = [];
-    const n = Math.round(str.length/size);
-    for(let i=0,j=0;i<n; i++,j += size){
-      tempArray.push(str.substr(j,size));
+    for(let i=0;i<str.length; i++){
+      let s = str.substr(i, size);
+      if(s.length == size){
+        tempArray.push(s);
+      }
     }
     return tempArray;
   }
+getContiguousSubstringsOfString_Option1('cater');
   // function getContiguousSubstringsOfString_Option1(str){
   //   let result = [];
   //   for( let i=0;i<str.length;i++){
